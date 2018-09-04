@@ -1,0 +1,37 @@
+section
+    width: 100%
+    padding: $blockmargin/2
+    @media only screen and (min-width: $breakpoint-small)
+        padding: $blockmargin*2
+
+section.dark 
+    background-color: $dark
+    color: white
+
+section.medium
+    background-color: $medium   
+
+section.dark-rough-bg
+    background-color: $dark
+    background: url('assets/dark-rough-bg.jpg') repeat
+    color: $light
+
+section.unpadded
+    padding: 0
+
+.heading__separator
+    content: ''
+    display: inline-block
+    border-bottom: 3px solid $highlight
+    width: 100px
+    margin: 0 0 1rem 0
+
+.calloutbox
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.07)
+    background-color: $light
+    padding: $blockmargin/2
+
+    @media only screen and (min-width: $breakpoint-small)
+        margin: $blockmargin
+        padding: $blockmargin
+        

@@ -1,0 +1,23 @@
+$container-width: 1000px
+$gutters: 2rem
+
+.container
+    max-width: $container-width
+    margin: 0 auto
+
+.row
+    display: block
+    margin-top: -$gutters
+    margin-left: -$gutters
+    margin-right: 0
+    margin-bottom: 0
+    
+    @media only screen and (min-width: $breakpoint-small)
+        display: flex
+
+.col
+    flex: 1
+    padding: $gutters 0 0 $gutters
+
+.col--bottom
+    align-self: flex-end
