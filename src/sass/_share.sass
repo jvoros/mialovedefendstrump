@@ -1,0 +1,33 @@
+#share
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.07)
+    opacity: 0.98
+    padding: 1rem
+    background: white
+
+    
+
+#share.sticky
+    position: fixed
+    top: 0
+    
+    .sharelogo
+        opacity: 1
+        transition: opacity 0.3s ease-out
+
+.sharewrap
+    @media only screen and (min-width: $breakpoint-small)
+        display: flex
+        justify-content: space-between
+
+.sharelogo
+    opacity: 0
+    text-transform: uppercase
+    font-weight: $font-weight-heavy
+
+.social 
+    font-size: 0.75rem
+
+    a
+        font-size: 1rem
+        text-decoration: none
+        margin: 0 0.5rem
