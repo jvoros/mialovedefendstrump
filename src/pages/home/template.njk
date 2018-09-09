@@ -1,14 +1,8 @@
 {% extends "shared/base.njk" %}
 
+{# base template variables #}
 {% set title = "Mia Love Defends Trump" %}
 {% set fbimage = "http://www.mialovedefendstrump.com/assets/facebook-graph-image.png" %}
 
-{% block hero %}
-    {% block heroheader %}TESTING{% endblock %}
-{% endblock %}
-
-{% block content %}
-
-    {% include 'demos/demos.njk' %}
-
-{% endblock %}
+{# hero template variables #}
+{% set heroheader = 'Mia&nbsp;Love <span class="highlight">defends</span> Donald Trump' %}

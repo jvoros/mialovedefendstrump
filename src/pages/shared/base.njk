@@ -60,9 +60,12 @@
 </head>
 <body>
 
-{% block content %}{% endblock %}
+{% block hero %}
+    {% include "shared/hero.njk" %}
+    {% include "shared/share.njk" %}
+{% endblock %}
 
-{% include "scripts/sticky.njk" %}
+{% block content %}{% endblock %}
 
 </body>
 </html>

@@ -26,8 +26,9 @@ function serve(done) {
 const config = {
   src: "./src",
   pages: "./src/pages/*.njk",
-  sass: ["./src/sass/*.sass", "./src/sass/*.scss"],
+  njkspath: "./src/pages",
   partials: "./src/pages/**/*",
+  sass: ["./src/sass/*.sass", "./src/sass/*.scss"],
   assets: "./src/assets/**/*",
   dest: "./dist",
   desthtml: "./dist/*.html",
@@ -48,10 +49,15 @@ gulp.task('sass', () => {
     .pipe(gulp.dest(config.dest));
 });
 
-gulp.task('html', () => {
+// nunjucks setup
+// top-level files in the config.pages directory are built into pages
+// the `path` variable sets the starting point for `extend` and `include` functions
+// the `shared` folder contains base templates and components shared across pages
+// each other directory contains partials for their respective pages
+gulp.task('nunjucks', () => {
   return gulp.src(config.pages)
     .pipe(nunjucks({
-      path: './src/pages'
+      path: config.njkspath
     }))
     .pipe(gulp.dest(config.dest));
 });
@@ -63,7 +69,7 @@ gulp.task('assets', () => {
 
 // WATCHERS
 gulp.task('watchers', () => {
-  gulp.watch(config.partials, gulp.series('cleanhtml', 'html', reload));
+  gulp.watch(config.partials, gulp.series('cleanhtml', 'nunjucks', reload));
   gulp.watch(config.sass, gulp.series('cleancss', 'sass', reload));
   gulp.watch(config.assets, gulp.series('cleanassets', 'assets', reload));
 });
@@ -71,7 +77,7 @@ gulp.task('watchers', () => {
 // RUNNERS
 const buildList = [
   'cleanall',
-  'html',
+  'nunjucks',
   'sass',
   'assets'
 ];
