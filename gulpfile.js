@@ -2,7 +2,7 @@ const gulp = require('gulp');
 
 const browserSync = require('browser-sync');
 const del = require('del');
-const fileinclude = require('gulp-file-include');
+const nunjucks = require('gulp-nunjucks-render');
 const sass = require('gulp-sass');
 
 // SERVERS
@@ -25,20 +25,20 @@ function serve(done) {
 // FINDERS
 const config = {
   src: "./src",
+  pages: "./src/pages/*.njk",
   sass: ["./src/sass/*.sass", "./src/sass/*.scss"],
-  pages: "./src/!(_)*.html", // do not include if starts with _
-  html: "./src/*.html",
+  partials: "./src/pages/**/*",
   assets: "./src/assets/**/*",
   dest: "./dist",
   desthtml: "./dist/*.html",
-  css: "./dist/*.css",
+  destcss: "./dist/*.css",
   destassets: "./dist/assets/**/*"
 }
 
 // CLEANERS
 gulp.task('cleanall', () => del(config.dest));
 gulp.task('cleanhtml', () => del(config.desthtml));
-gulp.task('cleancss', () => del(config.css));
+gulp.task('cleancss', () => del(config.destcss));
 gulp.task('cleanassets', () => del(config.destassets));
 
 // BUILDERS
@@ -50,21 +50,20 @@ gulp.task('sass', () => {
 
 gulp.task('html', () => {
   return gulp.src(config.pages)
-    .pipe(fileinclude({
-        prefix: '@@',
-        basepath: '@file'
-      }))
+    .pipe(nunjucks({
+      path: './src/pages'
+    }))
     .pipe(gulp.dest(config.dest));
 });
 
 gulp.task('assets', () => {
-  return gulp.src(config.assets, { base:'./src' })
+  return gulp.src(config.assets, { base: config.src })
   .pipe(gulp.dest(config.dest));
 });
 
 // WATCHERS
 gulp.task('watchers', () => {
-  gulp.watch(config.html, gulp.series('cleanhtml', 'html', reload));
+  gulp.watch(config.partials, gulp.series('cleanhtml', 'html', reload));
   gulp.watch(config.sass, gulp.series('cleancss', 'sass', reload));
   gulp.watch(config.assets, gulp.series('cleanassets', 'assets', reload));
 });

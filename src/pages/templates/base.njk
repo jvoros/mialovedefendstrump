@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mia Love Defends Trump</title>
+<title>{{ title }}</title>
 
 <!-- Favicon -->
 <link rel="apple-touch-icon" sizes="180x180" href="./Favicons/apple-touch-icon.png">
@@ -25,7 +25,7 @@
 <meta property="og:url" content="http://www.mialovedefendstrump.com" />
 <meta property="og:title" content="Mia Love Defends Donald Trump" />
 <meta property="og:description" content="Unlike her constituents in Utah's 4th Congressional District, Mia Love has been an ardent supporter and virtual rubber stamp for Donald Trump in Congress." />
-<meta property="og:image" content="http://www.mialovedefendstrump.com/assets/facebook-graph-image.png" />
+<meta property="og:image" content="{{ fbimage }}" />
 <meta property="og:image:width" content="600" />
 <meta property="og:image:height" content="419" />
 
@@ -59,3 +59,10 @@
 
 </head>
 <body>
+
+{% block content %}{% endblock %}
+
+{% include "scripts/sticky.njk" %}
+
+</body>
+</html>
