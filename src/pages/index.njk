@@ -1,11 +1,29 @@
 {% extends "home/template.njk" %}
 
 {% block content %}
-    {% include 'home/rubberstamp.njk' %}
+    <section class="rubberstamp medium">
+        <div class="container">
+            <h2>Mia Love <em>Defends</em> the Trump Agenda</h2>
+            <h3>She votes with Trump 95.6% of the time</h3>
+            <span class="heading__separator"></span>
+            <div class="left">
+                <p>Unlike her constituents in Utah's 4th Congressional District, Mia Love has been an ardent supporter and <a href="https://projects.fivethirtyeight.com/congress-trump-score/mia-b-love/">virtual rubber stamp for Donald Trump in Congress</a>. Trump can count on her support for:</p>
+                <ul>
+                    <li><a class="scroller" href="#medicaid">Slashing Medicare & Medicaid</a></li>
+                    <li><a class="scroller" href="#family-separations">Family separations at the border</a></li>
+                    <li><a class="scroller" href="#taxscam">Fiscal irresponsibility and tax cuts for the ultra-wealthy</a></li>
+                    <li><a class="scroller" href="#corruption">Defending a culture of corruption in Washington, DC</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     {% include 'home/medicaid.njk' %}
     {% include 'home/borderseparation.njk' %}
     {% include 'home/voting.njk' %}
     {% include 'home/taxscam.njk' %}
     {% include 'home/signletter.njk' %}
+    {% include 'home/corruption.njk' %}
     {% include 'home/sharewithfriends.njk' %}
+    
 {% endblock %}
