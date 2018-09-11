@@ -1,0 +1,29 @@
+{% extends "home/template.njk" %}
+
+{% block hero %}{% endblock %}
+
+{% block content %}
+    <section class="light center">
+        <h2>Contact Us</h2>
+        <span class="heading__separator"></span>
+        <form name="contact" method="POST" action="/contact-success.html" netlify-honeypot="bot-field" netlify>
+            <p class="hidden">
+                <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+            </p>
+            <p>
+                <label>Your Name: <input type="text" name="name" /></label>   
+            </p>
+            <p>
+                <label>Your Email: <input type="email" name="email" /></label>
+            </p>
+            <div style="display: inline-block; margin: 0 auto" data-netlify-recaptcha></div>
+            <p>
+                <label>Message:<br><textarea rows="10" cols="50" name="message"></textarea></label>
+            </p>
+            <p>
+                <button type="submit">Send</button>
+            </p>
+        </form>
+    </section>
+    {% include 'home/voting.njk' %}
+{% endblock %}
